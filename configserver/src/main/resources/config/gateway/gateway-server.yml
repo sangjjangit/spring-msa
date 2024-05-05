@@ -1,0 +1,67 @@
+server:
+  port: 8072
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/ # http://eurekaserver:8070/eureka/
+
+#logstash.host: 3.136.161.26:5000
+
+#logging:
+#  config: classpath:logback-delayed.xml
+
+spring:
+  cloud:
+    gateway:
+#      discovery.locator: # 자동 매핑 /{서비스아이디}/{requestMappingURL}
+#        enabled: true
+#        lowerCaseServiceId: true
+      routes: # 수동 경로 매핑
+        - id: organization-service
+          uri: lb://organization-service
+          predicates:
+            - Path=/organization/**
+          filters:
+            - RewritePath=/organization/(?<path>.*), /$\{path}
+
+#spring:
+#  zipkin:
+#    baseUrl: http://zipkin:9411
+#  sleuth:
+#    sampler:
+#      percentage: 1
+#  cloud:
+#    loadbalancer.ribbon.enabled: false
+#    gateway:
+#      routes:
+#        - id: organization-service
+#          uri: lb://organization-service
+#          predicates:
+#            - Path=/organization/**
+#          filters:
+#            - RewritePath=/organization/(?<path>.*), /$\{path}
+#            - RemoveRequestHeader= Cookie,Set-Cookie
+#        - id: licensing-service
+#          uri: lb://licensing-service
+#          predicates:
+#            - Path=/license/**
+#          filters:
+#            - RewritePath=/license/(?<path>.*), /$\{path}
+#            - RemoveRequestHeader= Cookie,Set-Cookie
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint: # s 차이 -0-
+    gateway:
+      enabled: true
+
+

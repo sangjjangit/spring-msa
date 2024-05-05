@@ -22,6 +22,16 @@ spring:
     username: '{cipher}a9aca0200da2ad1c2bc3173b5377b24448e723d5e02f28dace21c8ce163d44fc'
     testWhileIdle: true
     validationQuery: SELECT 1
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: orgChangeTopic
+          content-type: application/json
+    kafka:
+      binder:
+        zkNodes: kafka
+        brokers: kafka
 
 management.endpoints:
   web:

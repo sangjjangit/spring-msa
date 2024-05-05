@@ -12,6 +12,7 @@ spring:
             - classpath:config/license
             - classpath:config/organization
             - classpath:config/eureka
+            - classpath:config/gateway
 #        git: # 저장소
 #          uri: https://github.com/xxx/config.git # URL
 #          searchPaths: path # 깃 경로
