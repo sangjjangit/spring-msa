@@ -1,0 +1,7 @@
+example:
+  property: I AM THE PROD
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: '{cipher}a9aca0200da2ad1c2bc3173b5377b24448e723d5e02f28dace21c8ce163d44fc'

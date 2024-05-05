@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native #, git, vault
+  cloud:
+    config:
+      server:
+        native:
+          # search-locations: file:///Users/username
+          search-locations:
+            - classpath:config/license
+            - classpath:config/organization
+            - classpath:config/eureka
+#        git: # 저장소
+#          uri: https://github.com/xxx/config.git # URL
+#          searchPaths: path # 깃 경로
+#        vault: # 또 다른 백엔드 저장소
+#          port: 8200
+#          host: 127.0.0.1
+#          kvVersion: 2
+#            backend: licensing-service
+#            profile-separator: /
+
+
+
+
+server:
+  port: 8071
+encrypt:
+  key: fje83Ki8403Iod87dne7Yjsl3THueh48jfuO9j4U2hf64Lo

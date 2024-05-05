@@ -1,0 +1,36 @@
+example:
+  property: I AM THE DEFAULT
+
+spring:
+  #  datasource:
+  #    url: jdbc:mysql://localhost:3306/test
+  #    username: root
+  #    password: 1111
+
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    # 전송 쿼리 확인
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    # 테이블 생성 후에 data.sql 실행
+    defer-datasource-initialization: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: '{cipher}a9aca0200da2ad1c2bc3173b5377b24448e723d5e02f28dace21c8ce163d44fc'
+
+management.endpoints:
+    web:
+      exposure:
+        include: refresh
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+       defaultZone: http://localhost:8070/eureka/ # http://eurekaserver:8070/eureka/

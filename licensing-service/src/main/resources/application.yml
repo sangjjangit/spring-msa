@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: licensing-service
+  config:
+    import: "optional:configserver:http://localhost:8071"
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8071 # http://configserver:8071
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: refresh
